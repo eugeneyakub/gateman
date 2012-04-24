@@ -6,7 +6,8 @@ service test
         protocol        = tcp
         port            = 10000
         wait            = no
-only_from = 127.0.0.1 localhost
+        log_type = FILE /home/eugene/xnetd.log
+        only_from = 127.0.0.1 localhost
         user            = eugene
-server =  /home/eugene/simple_server.py 
+        server =  /home/eugene/simple_server.py 
 }
