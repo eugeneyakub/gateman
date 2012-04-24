@@ -1,10 +1,16 @@
 #!/usr/bin/env python
-
+'''
 import logging
 LOG_FILENAME = '/home/eugene/vzabote-xinetd.log'
 logging.basicConfig(filename=LOG_FILENAME,
      level=logging.ERROR,
      )
+'''
+import logging
+from logging.handlers import RotatingFileHandler
+
+rfh = RotatingFileHandler('/home/eugene/vzabote-xinetd.log', maxBytes=10*1024*1024, backupCount=5)
+logging.getLogger().addHandler(rfh)
 
 
 def kill_chrome(file_path, elapsed_time, command_to_execute, command_arg):
