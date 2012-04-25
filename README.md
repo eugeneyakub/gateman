@@ -1,10 +1,34 @@
 gateman
 =======
-в etc/services/   дописать   path_to_simple_server.py port/tcp
 
-sudo cp ./testx /etc/xinetd.d
-sudo service xinetd reload
-sudo service xinetd restart
+Установка в системе
+<pre>
+sudo cp ./http_watchdog /etc/xinetd.d
+sudo stop xinetd; start xinetd
+</pre>
 
+В /etc/xinet.d/http_watchdog прописать путь к скрипту http_watchdog.py и имя запускающего 
+пользователя в соответсвии с конфигурацие системы.
+ 
+Добавить в crontab запускающего пользователя периодическую задачу для проверки на 
+превышение периода бездействия контролируемого приложения:
 
-http://johansdevblog.blogspot.com/2009/11/writing-python-xinetd-server.html
+<pre>
+crontab -u user -e
+</pre>
+
+Код пункта в crontab:
+*/1 * * * * ~/http_watchdog/check_timeout.py
+
+Для оповещения сторожевого таймера необходимо не реже заданного 
+периода (1мин) отправлять любой HTTP запрос по адресу http://localhost:10000
+
+Пример:
+<pre>
+<script type='text/javascript' charset='utf-8'>
+function test(){
+    $.get('http://localhost:10000', function(data){});
+}
+setInterval(test, 5000);
+</script>
+</pre>

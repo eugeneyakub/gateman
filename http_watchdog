@@ -1,0 +1,13 @@
+service http_echo
+{
+    disable         = no
+    type            = UNLISTED
+    socket_type     = stream
+    protocol        = tcp
+    port            = 10000
+    wait            = no
+    log_type        = SYSLOG local0
+    only_from       = 127.0.0.1 localhost
+    user            = user
+    server          = /home/user/http_watchdog/http_watchdog.py
+}
