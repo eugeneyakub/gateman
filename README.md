@@ -18,7 +18,9 @@ crontab -u user -e
 </pre>
 
 Код пункта в crontab:
+<pre>
 */1 * * * * ~/http_watchdog/check_timeout.py
+</pre>
 
 Для оповещения сторожевого таймера необходимо не реже заданного 
 периода (1мин) отправлять любой HTTP запрос по адресу http://localhost:10000
