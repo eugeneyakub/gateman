@@ -78,10 +78,3 @@ texlive-pstricks-doc                            install
 <pre>
   sudo pip install pypdf
 </pre>
-
-bash команда для компиляции:
-<pre>
-  /sudo/bin/pdflatex some_file.tex
-</pre> 
-
-Для создания макета использовался Kile из репозитория.  Он поставит часть пакетов латекса автоматически
