@@ -44,7 +44,7 @@ sudo stop xinetd; start xinetd
 В /etc/xinet.d/http_latex прописать путь к скрипту http_latex.py и имя запускающего 
 пользователя в соответсвии с конфигурацие системы.
 
-Понадобится доустановить пакеты, котррые будет не хватать
+Понадобится доустановить пакеты, которых будет не хавать
 <pre>
 sudo apt-cache search texlive
 точно нужно: 
@@ -78,3 +78,10 @@ texlive-pstricks-doc                            install
 <pre>
   sudo pip install pypdf
 </pre>
+
+bash команда для компиляции:
+<pre>
+  /sudo/bin/pdflatex some_file.tex
+</pre> 
+
+Для создания макета использовался Kile из репозитория.  Он поставит часть пакетов латекса автоматически
