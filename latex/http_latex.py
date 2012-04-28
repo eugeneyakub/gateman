@@ -76,8 +76,8 @@ call([_command])
 '''
 
 
-_command = 'media=Custom.80x%s'%_height + 'mm ./request.pdf'
-args = ['lp', '-o', 'page-left=0', '-o', 'page-right=0', '-o', "page-top=0", '-o', "page-bottom=0", '-o', "page-top=0", '-o', _command]
+_command = 'media=Custom.80x%s'%_height + 'mm' 
+args = ['lp', '-o', 'page-left=0', '-o', 'page-right=0', '-o', "page-top=0", '-o', "page-bottom=0", '-o', "page-top=0", '-o', _command, './request.pdf']
 Popen(args)
 
 
