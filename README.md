@@ -46,40 +46,102 @@ sudo stop xinetd; start xinetd
 
 Понадобится доустановить пакеты, которых будет не хавать
 <pre>
-sudo apt-cache search texlive
-точно нужно: 
-texlive                                         install
-texlive-base                                    install
-texlive-binaries                                install
-texlive-common                                  install
-texlive-doc-base                                install
-texlive-extra-utils                             install
-texlive-font-utils                              install
-texlive-fonts-extra                             install
-texlive-fonts-extra-doc                         install
-texlive-fonts-recommended                       install
-texlive-fonts-recommended-doc                   install
-texlive-generic-extra                           install
-texlive-generic-recommended                     install
-texlive-lang-cyrillic                           install
-texlive-latex-base                              install
-texlive-latex-base-doc                          install
-texlive-latex-extra                             install
-texlive-latex-extra-doc                         install
-texlive-latex-recommended                       install
-texlive-latex-recommended-doc                   install
-texlive-luatex                                  install
-texlive-pictures                                install
-texlive-pictures-doc                            install
-texlive-pstricks                                install
-texlive-pstricks-doc                            install
-
-Установить обработчик pdf:
-<pre>
-  sudo pip install pypdf
+sudo apt-get install texlive
+sudo apt-get install texlive-lang-cyrillic
+sudo apt-get install texlive-latex-extra
+sudo apt-get install python-pypdf
 </pre>
-bash команда для компиляции:
+
+команда для компиляции:
 <pre>
   /sudo/bin/pdflatex some_file.tex
 </pre> 
-Для создания макета использовался Kile из репозитория.  Он поставит часть пакетов латекса автоматически
+Для создания макета использовался Kile из репозитория.  Он поставит часть пакетов латекса автоматически.
+
+Пример макета чека (latex_test.tex)
+<pre>
+\documentclass[12pt ]{extarticle}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage[width=7cm]{geometry}
+\usepackage{dashrule}
+\usepackage{ulem}
+\usepackage[active,tightpage]{preview}
+\renewcommand{\PreviewBorder}{0.5cm}
+\newcommand{\Newpage}{\end{preview}\begin{preview}}
+\renewcommand{\arraystretch}{1.5}
+\hyphenpenalty=10000 
+\usepackage{sans}
+\renewcommand{\bfdefault}{sbc}
+\begin{document}
+\begin{preview}
+\begin{flushleft}
+  \textbf{{\huge Взаботе} \\ 
+    \vspace{0.5cm}
+    {\large Список покупок}} \\
+  \vspace{0.5cm}
+  \hdashrule{6.5cm}{1pt}{}\\
+  \vspace{0.5cm}
+  \begin{trivlist} 
+  \item
+    \textbf{{\large Кактус} \\
+      супермаркет}\\
+    Свердловсикй проспект $-$, 71 /\\
+    Карла Либхнета, 24\\
+    \vspace{0.2cm}
+    \hdashrule{6.5cm}{1pt}{1pt}\\
+    \vspace{0.5cm}
+    \begin{tabular}{p{3cm}p{1.2cm}r}
+       Мука пшеничная. Первая мыльница  & 2 кг & 410 \sout{Р} \\
+       Гречка  & 1 кг & 105 \sout{Р} \\
+      Хлеб ржаной  & 1 б & 15.5 \sout{Р} \\
+       Итого  &   & 651 \sout{Р} \\
+    \end{tabular}\\
+    \vspace{0.22cm}
+    \hdashrule{6.5cm}{1pt}{1pt}\\
+    \vspace{0.5cm}
+    \textbf{Cпособы оплаты} \\
+    Наличными, картой \\
+    \vspace{0.5cm}
+    \textbf{Часы работы} \\
+    \begin{tabular}{p{3.2cm}p{3.2cm}}
+       \textbf{Пн$-$Пт}  & \textbf{Сб$-$Вс} \\
+       9:00$-$19:00 & 9:00$-$16:00 \\
+    \end{tabular}\\
+    \vspace{0.4cm}
+    \hdashrule{6.5cm}{1pt}{}\\
+    \vspace{0.5cm}
+  \item
+    \textbf{{\large Молния} \\
+      супермаркет}\\
+    Свердловсикй проспект, 71 /\\
+    Карла Либхнета, 24\\
+    \vspace{0.2cm}
+    \hdashrule{6.5cm}{1pt}{1pt}\\
+    \vspace{0.5cm}
+    \begin{tabular}{p{3cm}p{1.2cm}r}
+       Мука пшеничная. Первая мыльница  & 2 кг & 410 \sout{Р} \\
+       Гречка  & 1 кг & 105 \sout{Р} \\
+      Хлеб ржаной  & 1 б & 15.5 \sout{Р} \\
+       Итого  &   & 651 \sout{Р} \\
+    \end{tabular}\\
+    \vspace{0.22cm}
+    \hdashrule{6.5cm}{1pt}{1pt}\\
+    \vspace{0.5cm}
+    \textbf{Cпособы оплаты} \\
+    Наличными, картой \\
+    \vspace{0.5cm}
+    \textbf{Часы работы} \\
+    \begin{tabular}{p{3.2cm}p{3.2cm}}
+       \textbf{Пн$-$Пт}  & \textbf{Сб$-$Вс} \\
+       9:00$-$19:00 & 9:00$-$16:00 \\
+    \end{tabular}\\
+    \vspace{0.4cm}
+    \hdashrule{6.5cm}{1pt}{}\\
+    \vspace{0.5cm}
+  \end{trivlist}
+\end{flushleft}
+\end{preview}
+\end{document}
+</pre>
