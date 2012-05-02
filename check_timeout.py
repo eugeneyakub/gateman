@@ -14,10 +14,8 @@ import os.path, time
 from subprocess import call
 
 if __name__ == '__main__':
-    t1 = os.path.getmtime(file_path)
-    t2 = time.time()
 
-    if t2 - t1 > elapsed_time:
+    if not os.path.exists(file_path) or time.time() - os.path.getmtime(file_path) > elapsed_time :
         logging.error('Watchdog: WEB app check dely is over %d seconds, restarting browser' % elapsed_time)
         if call(['killall', 'chrome']) != 0:
-		logging.error('Watchdog: Error during browser resttart process!')
+            logging.error('Watchdog: Error during browser restart process!')
